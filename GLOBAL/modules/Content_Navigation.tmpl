@@ -1,0 +1,68 @@
+ <mt:Ignore><!-- Create pagination navigation. Condition based upon if page is statically or dynamically rendered using the search_results variable. --></mt:Ignore>
+ <mt:SetVarBlock name="pagination_navigation">
+     <mt:If name="search_results">
+         <mt:Ignore><!-- Navigation for dynamic pages (same as navigation found in the Search Results system template). --></mt:Ignore>
+         <mt:IfPreviousResults>
+             <a href="<$mt:PreviousLink$>" rel="prev" onclick="return swapContent(-1);">&laquo; Previous</a>&nbsp;
+         </mt:IfPreviousResults>
+         <mt:PagerBlock>
+             <mt:IfCurrentPage>
+                 <$mt:Var name="__value__"$>
+             <mt:Else>
+                 <a href="<$mt:PagerLink$>"><$mt:Var name="__value__"$></a>
+             </mt:IfCurrentPage>
+         </mt:PagerBlock>
+         <mt:IfMoreResults>
+             &nbsp;<a href="<$mt:NextLink$>" rel="next" onclick="return swapContent();">Next &raquo;</a>
+         </mt:IfMoreResults>
+     <mt:Else>
+         <mt:Ignore><!-- Navigation for statically published page. --></mt:Ignore>
+         <mt:If name="archive_template">
+             <$mt:ArchiveCount setvar="total_entries"$>
+         <mt:Else>
+             <$mt:BlogEntryCount setvar="total_entries"$>
+         </mt:If>
+         <mt:Ignore><!-- If blog contains more entries than the number of entries to display per page. --></mt:Ignore>
+         <mt:If name="total_entries" gt="$entries_per_page">
+             <mt:Ignore><!-- Set the total number of entries to iterate through the pages. --></mt:Ignore>
+             <mt:Ignore><!-- IF total entries divided by entries per page is a whole number. --></mt:Ignore>
+             <mt:If name="total_entries" op="%" value="$entries_per_page" eq="0">
+                 <mt:Ignore><!-- Set total pages to total entries divided by entries per page. --></mt:Ignore>
+                 <$mt:Var name="total_entries" op="/" value="$entries_per_page" setvar="total_pages"$>
+             <mt:Else>
+                 <mt:Ignore><!-- Get the remainder when dividing total entries by entries per page. --></mt:Ignore>
+                 <$mt:Var name="total_entries" op="%" value="$entries_per_page" setvar="remainder"$>
+                 <mt:Ignore><!-- Subtract remainder from total entries. --></mt:Ignore>
+                 <$mt:Var name="total_entries" op="-" value="$remainder" setvar="total_entries"$>
+                 <mt:Ignore><!-- Determine total pages by dividing total entries (minus remainder) by entries per page. --></mt:Ignore>
+                 <$mt:Var name="total_entries" op="/" value="$entries_per_page" setvar="total_pages"$>
+                 <mt:Ignore><!-- Add one page to handle the remainder of entries. --></mt:Ignore>
+                 <$mt:SetVar name="total_pages" op="++"$>
+             </mt:If>
+             <mt:Ignore><!-- Loop through total pages, creating links to all but the first page (which is the current page). --></mt:Ignore>
+             <mt:ignore><!-- Do not link to all pages, just keep it for the first 5 page--><mt:For from="1" to="$total_pages" step="1"></mt:ignore>
+             <mt:For from="1" to="5" step="1">     
+                 <mt:If name="__first__">
+                     <div class="results-pages" id="results-current-page"><$mt:Var name="__index__"$></div>
+                 <mt:Else>
+                     <div class="results-pages"><a href="<$mt:Var name="search_link"$><$mt:Var name="__index__"$>"><$mt:Var name="__index__"$></a></div>
+                 </mt:If> 
+             </mt:For>
+             <mt:Ignore><!-- Hard-coded link to the next page (page 2). --></mt:Ignore>
+             <div id="results-next-link"><a href="<$mt:Var name="search_link"$>2" rel="next">Next &raquo;</a></div>
+         </mt:If>
+     </mt:If>
+ </mt:SetVarBlock>
+
+ <mt:Ignore><!-- Strip space and trim navigation code. --></mt:Ignore>
+ <$mt:Var name="pagination_navigation" strip=" " trim="1" setvar="pagination_navigation"$>
+
+ <div class="content-nav">
+ <mt:Ignore><!-- Output variable if exists. --></mt:Ignore>
+ <$mt:Var name="pagination_navigation" strip=" " trim="1" setvar="pagination_navigation"$>
+ <mt:If name="pagination_navigation">
+     <div class="pagination-navigation" id="search-pagination-container">
+         <$mt:Var name="pagination_navigation"$>
+     </div>
+ </mt:If> 
+ </div>

@@ -1,0 +1,23 @@
+<mt:If name='template_debug' ne='0'><!-- ######### BEGIN OUTPUT: Global Template Module - Global Navigation ######### --></mt:If>
+
+        <div id="global-nav">
+        <div id="global-nav-inner">
+            <div id="global-nav-search">
+                <form method="get" action="<$mt:CGIPath$><$mt:SearchScript$>">
+                    <input type="hidden" name="limit" value="<$mt:SearchMaxResults$>" />
+                    <label for="search">Search</label>
+                    <input id="global-search" class="query" name="search" value="Search blogs.perl.org" onfocus="cleanGlobalSearch();" />
+                    <input class="submit" type="submit" value="Go" />
+                </form>
+            </div><!-- #global-nav-search -->
+
+            <ul id="global-nav-links">
+                <li><a href="/">blogs.perl.org</a></li>
+                <li><a href="http://www.perl.org/">www.perl.org</a></li>
+                <li><a href="http://www.pm.org/">www.pm.org</a></li>
+		<mt:include module="Navbar Sign In">
+            </ul><!-- #global-nav-links -->
+        </div><!-- #global-nav-inner -->
+        </div><!-- #global-nav -->
+        
+<mt:If name='template_debug' ne='0'><!-- ######### END OUTPUT: Global Template Module - Global Navigation ######### --></mt:If>

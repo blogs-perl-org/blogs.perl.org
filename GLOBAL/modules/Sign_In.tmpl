@@ -1,0 +1,64 @@
+
+<div class="widget-sign-in widget">
+    <h3 class="widget-header">Sign In</h3>
+    <div id="signin-widget-content" class="widget-content"></div>
+</div>
+<script type="text/javascript">
+/* <![CDATA[ */
+function mtUpdateSignInWidget(u) {
+    var separator = '&nbsp;&nbsp;|&nbsp;&nbsp;';
+    var el = document.getElementById('signin-widget-content');
+    var content = '';
+    if (!el) return;
+    if (u) {
+        if (u && u.is_authenticated) {
+            user = u;
+            mtSaveUser();
+        } else {
+            // user really isn't logged in; so let's do this!
+            return mtSignIn();
+        }
+    } else {
+        u = mtGetUser();
+    }
+    if (u && u.name) {
+        var url;
+        if (u.is_authenticated) {
+            if (u.is_author) {
+                url = '<$mt:CGIPath$><$mt:CommunityScript$>?__mode=view&blog_id=<$mt:BlogID$>';
+                url += '&static=' + encodeURIComponent( location.href );
+            } else {
+                url = u.url;
+            }
+        } else if (u.url) {
+            url = u.url;
+        } else {
+            url = null;
+        }
+        if (url)
+            content += 'You are signed in as <a href="' + url + '">' + u.name + '</a>';
+        else
+            content += 'You are signed in as ' + u.name + '';
+        if (u.is_author)
+            content += separator + '<a href="<$mt:CGIPath$><$mt:CommunityScript$>?__mode=edit&blog_id=<$mt:BlogID$>&return_to=' + encodeURIComponent(document.URL) + '">Edit profile</a>';
+        <mt:Unless name="hide_signout_link">
+        content += separator + '<a href="javascript:void(0)" onclick="return mtSignOutOnClick()">Sign out</a>';
+        </mt:Unless>
+    } else if (u && u.is_banned) {
+        content = 'You do not have permission to sign in to this blog.';
+    } else {
+        content = '<a href="javascript:void(0)" onclick="return mtSignInOnClick(\'signin-widget-content\')">Sign In</a>';
+        <mt:IfExternalUserManagement>
+        <mt:Else>
+        <mt:IfCommenterRegistrationAllowed>
+        content += separator + 'Not a member? <a href="<$mt:CGIPath$><$mt:CommunityScript$>?__mode=register&blog_id=<$mt:BlogID$>&return_to=' + encodeURIComponent(document.URL) + '">Register</a>';
+        </mt:IfCommenterRegistrationAllowed>
+        </mt:IfExternalUserManagement>
+    }
+    el.innerHTML = content;
+}
+mtAttachEvent('usersignin', mtUpdateSignInWidget);
+mtUpdateSignInWidget();
+/* ]]> */
+</script>
+

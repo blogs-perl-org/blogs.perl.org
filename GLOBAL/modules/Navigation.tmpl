@@ -1,0 +1,12 @@
+
+<div id="header-menu">
+    <ul>
+<mt:IfBlog>
+        <li><a href="<$mt:Link template="main_index"$>">Home</a></li>
+        <li><a href="<$mt:Link template="archive_index"$>">Archives</a></li>
+<mt:Else>
+        <li><a href="<$mt:Var name="blog_url"$>">Home</a></li>
+</mt:IfBlog>
+    </ul>
+</div>
+

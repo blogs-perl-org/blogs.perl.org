@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="<$mt:PublishCharset$>"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title><$mt:Var name="feed_title"$></title>
+    <generator uri="http://www.sixapart.com/movabletype/"><$mt:ProductName version="1"$></generator>
+    <link rel="self" href="<$mt:Var name="feed_self"$>" />
+    <link type="text/html" rel="alternate" href="<$mt:CGIPath$><$mt:CommunityScript$>?__mode=view&amp;id=<$mt:AuthorID$><mt:If name="blog_id">&amp;blog_id=<$mt:Var name="blog_id"$></mt:If>" title="<$mt:AuthorDisplayName encode_html="1"$>"/>
+    <mt:If name="feed_updated"><updated><$mt:Var name="feed_updated"$></updated></mt:If>
+    <id><$mt:Var name="feed_self"$></id>
+<mt:If name="entry">
+    <mt:Entries lastn="15">
+    <entry>
+        <title><$mt:EntryTitle remove_html="1" encode_xml="1"$></title>
+        <link rel="alternate" type="text/html" href="<$mt:EntryPermalink encode_xml="1"$>" />
+        <id><$mt:EntryAtomID$></id>
+
+        <published><$mt:EntryDate utc="1" format="%Y-%m-%dT%H:%M:%SZ"$></published>
+        <updated><$mt:EntryModifiedDate utc="1" format="%Y-%m-%dT%H:%M:%SZ"$></updated>
+
+        <summary><$mt:EntryExcerpt remove_html="1" encode_xml="1"$></summary>
+        <author>
+            <name><$mt:EntryAuthorDisplayName encode_xml="1"$></name>
+            <uri><$mt:CGIPath encode_xml="1"$><$mt:CommunityScript encode_xml="1"$>?__mode=view&amp;blog_id=<$mt:BlogID$>&amp;id=<$mt:EntryAuthorID$></uri>
+        </author>
+        <mt:EntryCategories>
+            <category term="<$mt:CategoryLabel encode_xml="1"$>" scheme="http://www.sixapart.com/ns/types#category" />
+        </mt:EntryCategories>
+        <mt:EntryTags><category term="<$mt:TagName normalize="1" encode_xml="1"$>" label="<$mt:TagName encode_xml="1"$>" scheme="http://www.sixapart.com/ns/types#tag" /></mt:EntryTags>
+        <content type="html" xml:lang="<$mt:BlogLanguage ietf="1"$>" xml:base="<$mt:BlogURL encode_xml="1"$>">
+            <$mt:EntryBody encode_xml="1"$>
+            <$mt:EntryMore encode_xml="1"$>
+        </content>
+    </entry>
+    </mt:Entries>
+<mt:ElseIf name="comment">
+    <mt:Comments lastn="15">
+    <entry>
+        <title><$mt:CommentBody trim="20" remove_html="1" encode_xml="1"$></title>
+        <link rel="alternate" type="text/html" href="<$mt:CommentLink encode_xml="1"$>" />
+        <id><mt:CommentEntry><$mt:EntryAtomID$></mt:CommentEntry>#<$mt:CommentID$></id>
+        <updated><$mt:CommentDate utc="1" format="%Y-%m-%dT%H:%M:%SZ"$></updated>
+        <author>
+            <name><$mt:CommentAuthor encode_xml="1"$></name>
+            <mt:If tag="CommenterURL"><uri><$mt:CommenterURL encode_xml="1"$></uri></mt:If>
+        </author>
+        <content type="html" xml:lang="<$mt:BlogLanguage ietf="1"$>" xml:base="<$mt:BlogURL encode_xml="1"$>">
+            <$mt:CommentBody encode_xml="1"$>
+        </content>
+    </entry>
+    </mt:Comments>
+<mt:ElseIf name="action">
+    <mt:Actions>
+    <entry>
+        <mt:ActionsEntry>
+        <title>Posted <$mt:EntryTitle remove_html="1" encode_xml="1"$> to <$mt:EntryBlogName remove_html="1" encode_xml="1"$></title>
+        <link rel="alternate" type="text/html" href="<$mt:EntryPermalink encode_xml="1"$>" />
+        <id><$mt:EntryAtomID$></id>
+        <published><$mt:EntryDate utc="1" format="%Y-%m-%dT%H:%M:%SZ"$></published>
+        <updated><$mt:EntryModifiedDate utc="1" format="%Y-%m-%dT%H:%M:%SZ"$></updated>
+        <summary><$mt:EntryExcerpt remove_html="1" encode_xml="1"$></summary>
+        <author>
+            <name><$mt:EntryAuthorDisplayName encode_xml="1"$></name>
+            <uri><$mt:CGIPath encode_xml="1"$><$mt:CommunityScript encode_xml="1"$>?__mode=view&amp;blog_id=<$mt:BlogID$>&amp;id=<$mt:EntryAuthorID$></uri>
+        </author>
+        <mt:EntryCategories><category term="<$mt:CategoryLabel encode_xml="1"$>" scheme="http://www.sixapart.com/ns/types#category" /></mt:EntryCategories>
+        <mt:EntryTags><category term="<$mt:TagName normalize="1" encode_xml="1"$>" label="<$mt:TagName encode_xml="1"$>" scheme="http://www.sixapart.com/ns/types#tag" /></mt:EntryTags>
+        <content type="html" xml:lang="<$mt:BlogLanguage ietf="1"$>" xml:base="<$mt:BlogURL encode_xml="1"$>">
+            <$mt:EntryBody encode_xml="1"$>
+            <$mt:EntryMore encode_xml="1"$>
+        </content>
+        </mt:ActionsEntry>
+        <mt:ActionsComment>
+        <title>Commented on <mt:CommentEntry><$mt:EntryTitle remove_html="1" encode_xml="1"$> in <$mt:EntryBlogName remove_html="1" encode_xml="1"$></mt:CommentEntry></title>
+        <link rel="alternate" type="text/html" href="<$mt:CommentLink encode_xml="1"$>" />
+        <id><mt:CommentEntry><$mt:EntryAtomID$></mt:CommentEntry>#<$mt:CommentID$></id>
+        <updated><$mt:CommentDate utc="1" format="%Y-%m-%dT%H:%M:%SZ"$></updated>
+        <author>
+            <name><$mt:CommentAuthor encode_xml="1"$></name>
+            <mt:If tag="CommenterURL"><uri><$mt:CommenterURL encode_xml="1"$></uri></mt:If>
+        </author>
+        <content type="html" xml:lang="<$mt:BlogLanguage ietf="1"$>" xml:base="<$mt:BlogURL encode_xml="1"$>">
+            <$mt:CommentBody encode_xml="1"$>
+        </content>
+        </mt:ActionsComment>
+        <mt:ActionsFavorite>
+        <title>Voted on <$mt:EntryTitle remove_html="1" encode_xml="1"$> in <$mt:EntryBlogName remove_html="1" encode_xml="1"$></title>
+        <link rel="alternate" type="text/html" href="<$mt:EntryPermalink encode_xml="1"$>" />
+        <id><$mt:EntryAtomID$></id>
+        <published><$mt:EntryDate utc="1" format="%Y-%m-%dT%H:%M:%SZ"$></published>
+        <updated><$mt:EntryModifiedDate utc="1" format="%Y-%m-%dT%H:%M:%SZ"$></updated>
+        <author>
+            <name><$mt:EntryAuthorDisplayName encode_xml="1"$></name>
+            <uri><$mt:CGIPath encode_xml="1"$><$mt:CommunityScript encode_xml="1"$>?__mode=view&amp;blog_id=<$mt:BlogID$>&amp;id=<$mt:EntryAuthorID$></uri>
+        </author>
+        <content type="html" xml:lang="<$mt:BlogLanguage ietf="1"$>" xml:base="<$mt:BlogURL encode_xml="1"$>">
+            <![CDATA[<p><$mt:EntryAuthorDisplayName remove_html="1" encode_xml="1"$> voted on <a href="<$mt:EntryPermalink encode_xml="1"$>"><$mt:EntryTitle remove_html="1" encode_xml="1"$></a> in <$mt:EntryBlogName remove_html="1" encode_xml="1"$></p>]]>
+        </content>
+        </mt:ActionsFavorite>
+    </entry>
+    </mt:Actions>
+</mt:If>
+</feed>

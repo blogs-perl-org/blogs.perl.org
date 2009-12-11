@@ -1,0 +1,25 @@
+<mt:If name='template_debug' ne='0'><!-- ######### BEGIN OUTPUT: Archive Template - Category Entry Listing (BlogID=<$mt:BlogID$>) ######### --></mt:If>
+
+<$mt:Include module="Header"$>
+
+                            <h1 id="page-title" class="archive-title"><$mt:ArchiveTitle remove_html="1"$> Archives</h1>
+
+
+<mt:Ignore><!-- Limit number of entries to the number set in Blog Entry Settings --></mt:Ignore>
+<mt:Unless name="datebased_archive"><$mt:Var name="limit" value="auto"$></mt:Unless>
+<mt:Entries limit="$limit">
+                            <mt:Ignore><!-- Use the Entry Summary module for each entry published on this page --></mt:Ignore>
+                            <$mt:Include module="Entry Summary"$>
+</mt:Entries>
+
+
+                            <div class="content-nav">
+                                <mt:ArchivePrevious><a href="<$mt:ArchiveLink$>">&laquo; <$mt:ArchiveTitle remove_html="1"$></a> |</mt:ArchivePrevious>
+                                <a href="<$mt:Link template="main_index"$>">Main Index</a> |
+                                <a href="<$mt:Link template="archive_index"$>">Archives</a>
+                                <mt:ArchiveNext>| <a href="<$mt:ArchiveLink$>"><$mt:ArchiveTitle remove_html="1"$> &raquo;</a></mt:ArchiveNext>
+                            </div>
+
+<$mt:Include module="Footer"$>
+
+<mt:If name='template_debug' ne='0'><!-- ######### BEGIN OUTPUT: Archive Template - Category Entry Listing (BlogID=<$mt:BlogID$>) ######### --></mt:If>
