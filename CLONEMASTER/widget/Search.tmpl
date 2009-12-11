@@ -1,0 +1,36 @@
+<div class="widget-search widget">
+    <h3 class="widget-header">Search</h3>
+    <div class="widget-content">
+        <form method="get" action="<$mt:CGIPath$><$mt:SearchScript$>">
+            <input type="text" id="search" class="ti" name="search" value="<$mt:SearchString$>" />
+<mt:If name="search_results">
+            <input type="hidden" name="IncludeBlogs" value="<$mt:SearchIncludeBlogs$>" />
+            <mt:Ignore>
+            <!-- use these options only with MT::App::Search::Legacy -->
+            <ul class="search-options">
+                <li><input type="checkbox" name="CaseSearch" /> Case sensitive</li>
+                <li><input type="checkbox" name="RegexSearch" /> Regex search</li>
+            </ul>
+            </mt:Ignore>
+<mt:Else>
+            <input type="hidden" name="IncludeBlogs" value="<$mt:BlogID$>" />
+</mt:If>
+            <input type="hidden" name="limit" value="<$mt:SearchMaxResults$>" />
+            <input type="submit" accesskey="4" value="Search" />
+        </form>
+    </div>
+</div>
+<mt:If name="search_results">
+    <mt:IfTagSearch>
+<div class="widget-tags widget">
+    <h3 class="widget-header">Tags</h3>
+    <div class="widget-content">
+        <ul>
+        <mt:Tags>
+            <li><a href="javascript:void(0)" onclick="location.href='<$mt:TagSearchLink encode_js="1"$>';return false;"><$mt:TagName$> (<$mt:TagCount$>)</a></li>
+        </mt:Tags>
+        </ul>
+    </div>
+</div>
+    </mt:IfTagSearch>
+</mt:If>
