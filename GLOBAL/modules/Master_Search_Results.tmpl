@@ -1,5 +1,11 @@
 <mt:If name='template_debug' ne='0'><!-- ######### BEGIN OUTPUT: Search_Results ######### --></mt:If>
-
+<mt:Ignore><!--
+If we're searching multiple blogs, let's force the results page into
+'aggregator mode' to avoid picking up the title from the first match.
+Additionally, we'll set $blog_override to force Header to use blog #1's
+title and tagline.
+--></mt:ignore>
+<mt:If tag='searchincludeblogs' like=','><$mt:Var name='system_page' value='1'$><mt:Var name="blog_override" value="1"></mt:If>
 <$mt:Include module="Header"$>
 
 <mt:Ignore><!--
@@ -83,3 +89,4 @@ var timer = window.setTimeout("getResults(" + <$mt:CurrentPage$> + ")", 1*1000);
 </mt:IfMoreResults>
 
 <$mt:Include module="Footer"$>
+

@@ -7,16 +7,29 @@
     <!-- Community Solution Blog variables -->
     <!-- The below variables are used when there a blog is in context.  -->
         </mt:Ignore>
+        <mt:If var="blog_override">
+        <mt:MultiBlog include_blogs="1">
+        <mt:SetVarBlock name="blog_name"><$mt:BlogName encode_html="1"$></mt:SetVarBlock>
+        <mt:SetVarBlock name="blog_description"><$mt:BlogDescription$></mt:SetVarBlock>
+        <mt:SetVarBlock name="blog_url"><$mt:BlogURL$></mt:SetVarBlock>
+        <mt:unless name="title"><mt:SetVarBlock name="title"><mt:var name="blog_name"> search results</mt:SetVarBlock></mt:unless>
+        <mt:SetVarBlock name="profile_view_url"><$mt:CGIPath$><$mt:CommunityScript$>?__mode=view&amp;blog_id=<$mt:BlogID encode_html="1"$>&amp;id=</mt:SetVarBlock>
+        </mt:MultiBlog>
+        <mt:Else>
         <mt:SetVarBlock name="blog_id"><$mt:BlogID$></mt:SetVarBlock>
         <mt:SetVarBlock name="blog_name"><$mt:BlogName encode_html="1"$></mt:SetVarBlock>
         <mt:SetVarBlock name="blog_description"><$mt:BlogDescription$></mt:SetVarBlock>
         <mt:SetVarBlock name="blog_url"><$mt:BlogURL$></mt:SetVarBlock>
         <mt:unless name="title"><mt:SetVarBlock name="title"><mt:var name="blog_name"> at blogs.perl.org</mt:SetVarBlock></mt:unless>
         <mt:SetVarBlock name="profile_view_url"><$mt:CGIPath$><$mt:CommunityScript$>?__mode=view&amp;blog_id=<$mt:BlogID encode_html="1"$>&amp;id=</mt:SetVarBlock>
+        </mt:If>
     <link href="<$mt:BlogURL$>styles/reset.css" rel="stylesheet" type="text/css" />
     <link href="<$mt:BlogURL$>styles/base.css" rel="stylesheet" type="text/css" />
     <link href="<$mt:StaticWebPath$>plugins/GCPrettify/prettify.css" rel="stylesheet" type="text/css" />
-    <link rel="alternate" type="application/atom+xml" title="Atom" href="<$mt:Link template="feed_recent"$>" />
+    <link rel="alternate" type="application/atom+xml" title="Entries" href="<$mt:Link template="feed_recent"$>" />
+<mt:If name='aggregator_main_index'>
+    <link rel="alternate" type="application/atom+xml" title="Comments" href="<$mt:Link template="Feed - Recent Comments"$>" />
+</mt:If>
     <link rel="start" href="<$mt:BlogURL$>" title="Home" />
     <script type="text/javascript" src="<$mt:Link template="javascript"$>"></script>
     <script type="text/javascript" src="<$mt:StaticWebPath$>plugins/GCPrettify/prettify.js"></script>
@@ -69,3 +82,4 @@
             <div id="content-main">
             
 <mt:If name='template_debug' ne='0'><!-- ######### END OUTPUT: Global Template Module - Header ######### --></mt:If>
+
