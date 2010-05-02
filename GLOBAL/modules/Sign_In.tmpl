@@ -1,4 +1,3 @@
-
 <div class="widget-sign-in widget">
     <h3 class="widget-header">Sign In</h3>
     <div id="signin-widget-content" class="widget-content"></div>
@@ -51,7 +50,7 @@ function mtUpdateSignInWidget(u) {
         <mt:IfExternalUserManagement>
         <mt:Else>
         <mt:IfCommenterRegistrationAllowed>
-        content += separator + 'Not a member? <a href="<$mt:CGIPath$><$mt:CommunityScript$>?__mode=register&blog_id=<$mt:BlogID$>&return_to=' + encodeURIComponent(document.URL) + '">Register</a>';
+        content += separator + 'Not a member? <a href="<$mt:CGIPath$><$mt:CommunityScript$>?__mode=register&blog_id=1&return_to=' + encodeURIComponent(document.URL) + '">Register</a>';
         </mt:IfCommenterRegistrationAllowed>
         </mt:IfExternalUserManagement>
     }
