@@ -2,6 +2,7 @@
 <mt:Unless name='system_page'><mt:Unless name='aggregator_page'><mt:SetVarBlock name="userblog_page">1</mt:SetVarBlock></mt:Unless></mt:Unless>
 <mt:SetVarBlock name="html_head" prepend="1">
 
+    <mt:SetVarBlock name="profile_view_url"><$mt:CGIPath$><$mt:CommunityScript$>?__mode=view&amp;id=</mt:SetVarBlock>
     <mt:IfBlog>
         <mt:Ignore>
     <!-- Community Solution Blog variables -->
@@ -13,7 +14,6 @@
         <mt:SetVarBlock name="blog_description"><$mt:BlogDescription$></mt:SetVarBlock>
         <mt:SetVarBlock name="blog_url"><$mt:BlogURL$></mt:SetVarBlock>
         <mt:unless name="title"><mt:SetVarBlock name="title"><mt:var name="blog_name"> search results</mt:SetVarBlock></mt:unless>
-        <mt:SetVarBlock name="profile_view_url"><$mt:CGIPath$><$mt:CommunityScript$>?__mode=view&amp;blog_id=<$mt:BlogID encode_html="1"$>&amp;id=</mt:SetVarBlock>
         </mt:MultiBlog>
         <mt:Else>
         <mt:SetVarBlock name="blog_id"><$mt:BlogID$></mt:SetVarBlock>
@@ -21,7 +21,6 @@
         <mt:SetVarBlock name="blog_description"><$mt:BlogDescription$></mt:SetVarBlock>
         <mt:SetVarBlock name="blog_url"><$mt:BlogURL$></mt:SetVarBlock>
         <mt:unless name="title"><mt:SetVarBlock name="title"><mt:var name="blog_name"> at blogs.perl.org</mt:SetVarBlock></mt:unless>
-        <mt:SetVarBlock name="profile_view_url"><$mt:CGIPath$><$mt:CommunityScript$>?__mode=view&amp;blog_id=<$mt:BlogID encode_html="1"$>&amp;id=</mt:SetVarBlock>
         </mt:If>
     <link href="<$mt:BlogURL$>styles/reset.css" rel="stylesheet" type="text/css" />
     <link href="<$mt:BlogURL$>styles/base.css" rel="stylesheet" type="text/css" />
@@ -44,7 +43,6 @@
         <mt:unless name="blog_description"><mt:SetVarBlock name="blog_description">Blog Description</mt:SetVarBlock></mt:unless>
         <mt:unless name="blog_url"><mt:SetVarBlock name="blog_url">#</mt:SetVarBlock></mt:unless>
         <mt:unless name="title">blogs.perl.org</mt:unless>
-        <mt:SetVarBlock name="profile_view_url"><$mt:CGIPath$><$mt:CommunityScript$>?__mode=view&amp;blog_id=<$mt:BlogID encode_html="1"$>&amp;id=</mt:SetVarBlock>
     <link href="/styles/reset.css" rel="stylesheet" type="text/css" />
 	<link href="/styles/base.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" charset="utf-8"><$mt:Include module="GlobalJavaScript"$></script>
