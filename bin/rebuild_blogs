@@ -1,0 +1,39 @@
+#!/usr/bin/perl
+
+use strict;
+use Getopt::Long;
+my $basedir;
+
+my $result = GetOptions("basedir=s" => \$basedir);
+if (! $basedir) {
+     die "usage: mt-simple-rebuild --basedir=/path/to/MT\n";
+}
+
+use constant MT_DIR => $basedir
+use lib MT_DIR . 'lib';     # Add the lib directory to the paths checked by Perl for required modules
+use lib MT_DIR . 'extlib';  # Add the extlib directory to the paths checked by Perl for required modules
+
+use MT;
+use MT::Blog;
+
+use constant DEBUG => '1';
+
+my $blog;
+
+my $mt = MT->new('Directory' => MT_DIR) or die 'no mt'; # Instantiate a new Movable Type object
+
+my $iter = MT::Blog->load_iter();   # Load an iterator with all of the blogs in the current Movable Type installation
+
+# Iterate through the blogs, rebuilding each one.
+
+while ( my $blog = $iter->() ) {
+     DEBUG and print STDERR "Checking out blog ", $blog->name, "\n";
+
+     $mt->rebuild(
+         BlogID => $blog->id,
+         Force  => 1
+     ) || die "Rebuild error: ", $mt->errstr;
+
+}
+
+print "Done.\n";
