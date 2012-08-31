@@ -9,7 +9,7 @@ if (! $basedir) {
      die "usage: mt-simple-rebuild --basedir=/path/to/MT\n";
 }
 
-use constant MT_DIR => $basedir
+use constant MT_DIR => $basedir;
 use lib MT_DIR . 'lib';     # Add the lib directory to the paths checked by Perl for required modules
 use lib MT_DIR . 'extlib';  # Add the extlib directory to the paths checked by Perl for required modules
 
