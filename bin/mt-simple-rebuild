@@ -2,11 +2,16 @@
 
 use strict;
 use Getopt::Long;
-my $basedir;
 
-my $result = GetOptions("basedir=s" => \$basedir);
-if (! $basedir) {
-     die "usage: mt-simple-rebuild --basedir=/path/to/MT\n";
+my $basedir;
+BEGIN {
+
+    my $result = GetOptions("basedir=s" => \$basedir);
+    if (! $basedir) {
+        die "usage: mt-simple-rebuild --basedir=/path/to/MT\n";
+    }
+
+    $basedir .= '/' unless $basedir =~ m|/$|;
 }
 
 use constant MT_DIR => $basedir;
