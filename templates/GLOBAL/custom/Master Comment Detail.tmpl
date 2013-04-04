@@ -1,0 +1,23 @@
+<div id="comment-<$mt:CommentID$>" class="comment<mt:IfCommentParent> comment-reply</mt:IfCommentParent><mt:IfCommenterIsEntryAuthor> entry-author-comment</mt:IfCommenterIsEntryAuthor>">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+                <span class="byline">
+                    <$mt:CommentAuthorIdentity$>
+<mt:IfCommentParent>
+                    <span class="vcard author"><$mt:CommentAuthorLink$></span> replied to <a href="<mt:CommentParent><$mt:CommentLink$></mt:CommentParent>">comment from <mt:CommentParent><$mt:CommentAuthor$></mt:CommentParent></a>
+<mt:Else>
+                    <span class="vcard author"><$mt:CommentAuthorLink$></span>
+</mt:IfCommentParent>
+                    | <a href="<$mt:CommentLink$>"><abbr class="published" title="<$mt:CommentDate format_name="iso8601"$>"><$mt:CommentDate$></abbr></a>
+<mt:IfCommentsAccepted>
+                    | <$mt:CommentReplyToLink$>
+</mt:IfCommentsAccepted>
+                </span>
+            </div>
+        </div>
+        <div class="comment-content">
+            <$mt:CommentBody$>
+        </div>
+    </div>
+</div>

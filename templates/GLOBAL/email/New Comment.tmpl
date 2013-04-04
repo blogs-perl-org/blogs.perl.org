@@ -1,0 +1,19 @@
+<mt:If name="unapproved">An unapproved comment has been posted on your blog <$mt:BlogName$>, for entry #<$mt:EntryID$> (<$mt:EntryTitle$>). You need to approve this comment before it will appear on your site.<mt:Else>A new comment has been posted on your blog <$mt:BlogName$>, on entry #<$mt:EntryID$> (<$mt:EntryTitle$>).</mt:If>
+
+<$mt:CommentBody remove_html="1" wrap_text="72"$>
+
+Commenter name: <$mt:CommentAuthor$> 
+Commenter email address: <$mt:CommentEmail$>
+Commenter URL: <$mt:CommentURL$>
+Commenter IP address: <$mt:CommentIP$>
+
+<mt:If name="unapproved"><mt:If name="state_editable">Approve comment:
+  <<$mt:Var name="approve_url"$>></mt:If></mt:If>
+<mt:If name="view_url">View comment:
+  <<$mt:Var name="view_url"$>></mt:If>
+Edit comment:
+  <<$mt:Var name="edit_url"$>>
+<mt:If name="state_editable">Report comment as spam:
+  <<$mt:Var name="spam_url"$>></mt:If>
+
+<$mt:Include module="Mail Footer"$>

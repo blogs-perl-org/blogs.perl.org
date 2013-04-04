@@ -1,0 +1,74 @@
+<div class="widget-about-this-page widget">
+    <h3 class="widget-header">
+<mt:If name="entry_template">
+        About this Entry
+<mt:Else>
+    <mt:If name="archive_template">
+        About this Archive
+    </mt:If>
+</mt:If>
+<mt:If name="archive_index">
+        About Archives
+</mt:If>
+    </h3>
+    <div class="widget-content">
+<mt:If name="archive_index">
+        <p>This page contains links to all the archived content.</p>
+</mt:If>
+<mt:If name="entry_template">
+        <p class="first">This page contains a single entry by <$mt:EntryAuthorLink$> published on <em><$mt:EntryDate format="%x %X"$></em>.</p>
+    <mt:EntryPrevious>
+        <p><a href="<$mt:EntryPermalink$>"><$mt:EntryTitle remove_html="1"$></a> was the previous entry in this blog.</p>
+    </mt:EntryPrevious>
+    <mt:EntryNext>
+        <p><a href="<$mt:EntryPermalink$>"><$mt:EntryTitle remove_html="1"$></a> is the next entry in this blog.</p>
+    </mt:EntryNext>
+</mt:If>
+<mt:If name="category_archive">
+    <mt:If name="datebased_archive">
+        <p class="first">This page is an archive of entries in the <strong><$mt:CategoryLabel$></strong> category from <strong><$mt:ArchiveDate format="%B %Y"$></strong>.</p>
+        <mt:ArchivePrevious>
+        <p><a href="<$mt:ArchiveLink$>"><$mt:ArchiveTitle$></a> is the previous archive.</p>
+        </mt:ArchivePrevious>
+        <mt:ArchiveNext>
+        <p><a href="<$mt:ArchiveLink$>"><$mt:ArchiveTitle$></a> is the next archive.</p>
+        </mt:ArchiveNext>
+    <mt:Else>
+        <p class="first">This page is an archive of recent entries in the <strong><$mt:CategoryLabel$></strong> category.</p>
+        <mt:CategoryPrevious>
+        <p><a href="<$mt:CategoryArchiveLink$>"><$mt:CategoryLabel$></a> is the previous category.</p>
+        </mt:CategoryPrevious>
+        <mt:CategoryNext>
+        <p><a href="<$mt:CategoryArchiveLink$>"><$mt:CategoryLabel$></a> is the next category.</p>
+        </mt:CategoryNext>
+    </mt:If>
+</mt:If>
+<mt:If name="author_archive">
+    <mt:If name="datebased_archive">
+        <p class="first">This page is an archive of recent entries written by <strong><$mt:AuthorDisplayName encode_html="1"$></strong> in <strong><$mt:ArchiveDate format="%B %Y"$></strong>.</p>
+        <mt:ArchivePrevious>
+        <p><a href="<$mt:ArchiveLink$>"><$mt:ArchiveTitle$></a> is the previous archive.</p>
+        </mt:ArchivePrevious>
+        <mt:ArchiveNext>
+        <p><a href="<$mt:ArchiveLink$>"><$mt:ArchiveTitle$></a> is the next archive.</p>
+        </mt:ArchiveNext>
+    <mt:Else>
+        <p class="first">This page is an archive of recent entries written by <strong><$mt:AuthorDisplayName encode_html="1"$></strong>.</p>
+    </mt:If>
+</mt:If>
+<mt:If name="datebased_only_archive">
+        <p class="first">This page is an archive of entries from <strong><$mt:ArchiveDate format="%B %Y"$></strong> listed from newest to oldest.</p>
+    <mt:ArchivePrevious>
+        <p><a href="<$mt:ArchiveLink$>"><$mt:ArchiveTitle$></a> is the previous archive.</p>
+    </mt:ArchivePrevious>
+    <mt:ArchiveNext>
+        <p><a href="<$mt:ArchiveLink$>"><$mt:ArchiveTitle$></a> is the next archive.</p>
+    </mt:ArchiveNext>
+</mt:If>
+<mt:If name="archive_index">
+        <p>Find recent content on the <a href="<$mt:BlogURL$>">main index</a>.</p>
+<mt:Else>
+        <p>Find recent content on the <a href="<$mt:BlogURL$>">main index</a> or look in the <a href="<$mt:Link template="archive_index"$>">archives</a> to find all content.</p>
+</mt:If>
+    </div>
+</div>

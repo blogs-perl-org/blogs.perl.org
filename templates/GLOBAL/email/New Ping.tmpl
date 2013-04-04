@@ -1,0 +1,23 @@
+<mt:If name="unapproved"><mt:If name="entry_id">An unapproved TrackBack has been posted on your blog <$mt:BlogName$>, for entry #<$mt:EntryID$> (<$mt:EntryTitle$>). You need to approve this TrackBack before it will appear on your site."><mt:Else><mt:If name="category_id">An unapproved TrackBack has been posted on your blog <$mt:BlogName$>, for category #<$mt:CategoryID$>, (<$mt:CategoryLabel$>). You need to approve this TrackBack before it will appear on your site.</mt:If></mt:If></mt:If><mt:Unless name="unapproved"><mt:If name="entry_id">A new TrackBack has been posted on your blog <$mt:BlogName$>, on entry #<$mt:EntryID$> (<$mt:EntryTitle$>).<mt:Else><mt:If name="category_id">A new TrackBack has been posted on your blog <$mt:BlogName$>, on category #<$mt:CategoryID$> (<$mt:CategoryLabel$>).</mt:If></mt:If></mt:Unless>
+
+Excerpt: 
+<$mt:PingExcerpt wrap_text="72"$>
+
+URL: <$mt:PingURL$>
+Title: <$mt:PingTitle$>
+Blog: <$mt:PingBlogName$>
+IP address: <$mt:PingIP$>
+
+<mt:If name="state_editable"><mt:If name="unapproved">Approve TrackBack: 
+  <<$mt:Var name="approve_url"$>>
+</mt:If></mt:If>
+<mt:If name="entry"><mt:If tag="EntryPermalink">View TrackBack: 
+  <<$mt:EntryPermalink$>>
+</mt:If></mt:If>
+<mt:If name="state_editable">Report TrackBack as spam: 
+  <<$mt:Var name="spam_url"$>>
+</mt:If>
+Edit TrackBack: 
+  <<$mt:Var name="edit_url"$>>
+
+<$mt:Include module="Mail Footer"$>

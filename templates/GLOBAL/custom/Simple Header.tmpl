@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" id="sixapart-standard" xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title><$mt:Var name="title" encode_html="1"$></title>
+
+<mt:SetVarBlock name="html_head" prepend="1">
+<mt:If name="mt_debug">
+    <link rel="stylesheet" href="<$mt:Var name="static_uri"$>css/reset.css?v=<$mt:Var name="mt_version" escape="url"$>" type="text/css" />
+    <link rel="stylesheet" href="<$mt:Var name="static_uri"$>css/utilities.css?v=<$mt:Var name="mt_version" escape="url"$>" type="text/css" />
+    <link rel="stylesheet" href="<$mt:Var name="static_uri"$>css/messaging.css?v=<$mt:Var name="mt_version" escape="url"$>" type="text/css" />
+    <link rel="stylesheet" href="<$mt:Var name="static_uri"$>css/chromeless.css?v=<$mt:Var name="mt_version" escape="url"$>" type="text/css" />
+<mt:Else>
+    <link rel="stylesheet" href="<$mt:Var name="static_uri"$>css/simple.css?v=<$mt:Var name="mt_version" escape="url"$>" type="text/css" />
+</mt:If>
+
+    <!--[if IE]>
+    <link rel="stylesheet" href="<$mt:Var name="static_uri"$>css/hacks/ie.css?v=<$mt:Var name="mt_version" escape="url"$>" type="text/css" />
+    <![endif]-->
+<mt:If name="local_lang_id">
+    <mt:If name="local_lang_id" ne="en-us">
+    <link rel="stylesheet" href="<$mt:Var name="static_uri"$>styles_<$mt:Var name="local_lang_id"$>.css?v=<$mt:Var name="mt_version" escape="url"$>" />
+    </mt:If>
+</mt:If>
+
+<script type="text/javascript" src="<$mt:Var name="static_uri"$>js/common/Core.js?v=<$mt:Var name="mt_version" escape="url"$>"></script>
+    <script type="text/javascript" src="<$mt:Var name="static_uri"$>js/tc.js?v=<$mt:Var name="mt_version" escape="url"$>"></script>
+</mt:SetVarBlock>
+<$mt:Var name="html_head"$>
+<script type="text/javascript" src="<$mt:Var name="static_uri"$>mt.js?v=<$mt:Var name="mt_version" escape="url"$>"></script>
+
+<script language="javascript" type="text/javascript">
+<!--
+function showByID(id) {
+    var el = getByID(id);
+    if (el) el.style.display = "block";
+}
+function hideByID(id) {
+    var el = getByID(id);
+    if (el) el.style.display = "none";
+}
+// -->
+</script>
+<$mt:Var name="js_include"$>
+</head>
+
+<body id="<$mt:Var name="screen_id"$>" class="chromeless<mt:If name="mt_debug"> debug</mt:If><mt:If name="error_page"><mt:If name="is_full_screen"> error-screen</mt:If> chromeless-wide</mt:If><mt:If name="screen_type" eq="popup-screen"> chromeless-wide</mt:If> <$mt:Var name="body_class" default="dialog"$>">
+
+<div id="container">
+<div id="container-inner">
+    <div id="ctl"></div>
+    <div id="ctr"></div>
+    <div id="header" class="pkg">
+        <div id="brand"></div>
+        <div id="nav">
+            <mt:If name="wizard_steps">
+            <mt:Unless name="complete">
+            <mt:If name="step" ne="pre_start">
+            <mt:Loop name="wizard_steps">
+            <mt:Unless name="__last__">
+            <div class="step<mt:If name="active">_active</mt:If>"></div>
+            </mt:Unless>
+            </mt:Loop>
+            </mt:If>
+            </mt:Unless>
+            </mt:If>
+        </div>
+    </div>
+    <div id="content">
+        <div id="content-inner" class="inner pkg">
+            <div id="main-content"><div id="main-content-inner" class="inner pkg">

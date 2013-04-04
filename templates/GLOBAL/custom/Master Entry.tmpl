@@ -1,0 +1,34 @@
+<mt:If name='template_debug' ne='0'><!-- ######### BEGIN OUTPUT: Archive Template - Entry (BlogID=<$mt:BlogID$>) ######### --></mt:If>
+<mt:SetVarBlock name="title"><mt:entrytitle remove_html="1"><mt:if tag="BlogName"> | <mt:BlogName remote_html="1"> [blogs.perl.org]</mt:if></mt:SetVarBlock>
+<mt:SetVarBlock name="html_head" append="1">
+    <$mt:Var name="comments_per_page" value="50"$>
+    <mt:EntryPrevious><link rel="prev bookmark" href="<$mt:EntryPermalink$>" title="<$mt:EntryTitle encode_html="1"$>" /></mt:EntryPrevious>
+    <mt:EntryNext><link rel="next bookmark" href="<$mt:EntryPermalink$>" title="<$mt:EntryTitle encode_html="1"$>" /></mt:EntryNext>
+    <$mt:EntryTrackbackData$>
+    <mt:If tag="EntryCommentCount" gt="$comments_per_page">
+	    <script type="text/javascript">
+         MT.entryID = <$mt:EntryID$>;
+         MT.commentsPerPage = <$mt:Var name="comments_per_page"$>;
+         MT.entryCommentCount = <$mt:EntryCommentCount$>;
+         MT.commentIds = [<mt:Comments sort_order="ascend" glue=","><mt:CommentID></mt:Comments>];
+	    </script>
+	  </mt:If>
+</mt:SetVarBlock>
+
+<$mt:Include module="Header"$>
+
+<$mt:Include module="Entry Detail"$>
+
+<mt:EntryIfTagged>
+	<div class="entry-tags">
+    <h4>Tagged as<span class="delimiter">:</span></h4>
+    <span><mt:EntryTags glue='<span class="delimiter">, </span>'><a href=
+"javascript:void(0)" onclick="location.href='<$mt:TagSearchLink encode_js="1"$>';return false;" rel="tag"><$mt:TagName remove_html="1"$></a></mt:EntryTags></span>
+     </div>
+</mt:EntryIfTagged>
+
+<$mt:Include module="Master Comments"$>
+
+<$mt:Include module="Footer"$>
+
+<mt:If name='template_debug' ne='0'><!-- ######### BEGIN OUTPUT: Archive Template - Entry (BlogID=<$mt:BlogID$>) ######### --></mt:If>

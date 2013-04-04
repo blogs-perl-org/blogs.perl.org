@@ -1,0 +1,9 @@
+<mt:Ignore>
+    This is a custom set of widgets that are conditioned to only appear on the homepage (or "main_index"). More info: http://www.movabletype.org/documentation/designer/widget-sets.html
+</mt:Ignore>
+<mt:If name="main_index">
+    <$mt:Include widget="Recent Comments"$>
+    <$mt:Include widget="Recent Entries"$>
+    <$mt:Include widget="Recent Assets"$>
+    <$mt:Include widget="Tag Cloud"$>
+</mt:If>

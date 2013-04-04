@@ -1,0 +1,18 @@
+<mt:If name='template_debug' ne='0'><!-- ######### BEGIN OUTPUT: Archive Template - Page (BlogID=<$mt:BlogID$>) ######### --></mt:If>
+
+<mt:SetVarBlock name="html_head" append="1">
+    <$mt:EntryTrackbackData$>
+</mt:SetVarBlock
+
+<$mt:Include module="Header"$>
+
+<h1 class="page-title"><$mt:PageTitle$></h1>
+
+<div class="page-body">
+<$mt:PageBody$>
+<$mt:PageMore$>
+</div>
+
+<$mt:Include module="Footer"$>
+
+<mt:If name='template_debug' ne='0'><!-- ######### BEGIN OUTPUT: Archive Template - Page (BlogID=<$mt:BlogID$>) ######### --></mt:If>
