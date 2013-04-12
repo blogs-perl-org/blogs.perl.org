@@ -4,7 +4,7 @@
                 <div class="module-aux pkg" id="module-aux-about-author-<$mt:AuthorId$>">
                 <div class="module-inner">
                     <h3>About <$mt:AuthorDisplayName encode_html="1"$></h3>
-                    <p><img class="authorpic" src="<mt:If tag="AuthorUserpic"><mt:AuthorUserpicAsset><$mt:AssetThumbnailURL width="72" height="72"$>"</mt:AuthorUserpicAsset><mt:Else><$mt:StaticWebPath$>images/default-userpic-50.jpg</mt:If>" alt="user-pic" />
+                    <p><img class="authorpic" src="<mt:If tag="AuthorUserpic"><mt:AuthorUserpicAsset><$mt:AssetThumbnailURL width="72" height="72"$></mt:AuthorUserpicAsset><mt:Else><$mt:StaticWebPath$>images/default-userpic-50.jpg</mt:If>" alt="user-pic" />
 	            <mt:If tag="authordataabout_blurb"><$mt:authordataabout_blurb remove_html="1"$><mt:Else>I blog about Perl.</mt:If></p>
                     <div class="more-link"><a href="<$mt:CGIPath$><$mt:CommunityScript$>?__mode=view&amp;id=<$mt:AuthorId$>">More info &raquo;</a></div>
                 </div>
