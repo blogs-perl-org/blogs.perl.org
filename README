@@ -1,8 +1,8 @@
 
 This is the code for blogs.perl.org.
 
-The site runs on Movable Type Professional Edition [see http://movabletype.com/]. You can get the open source version of Movable Type from http://movabletype.org/.
+The site runs on Movable Type Professional Edition [see https://movabletype.com/]. You can get the open source version of Movable Type from http://movabletype.org/.
 
-This repository contains the templates that are used to build the site. These templates were created for us by Six Apart [http://sixapart.com/] and were donated to the blogs.perl.org team.
+This repository contains the templates that are used to build the site. These templates were created for us by Six Apart (now Movable Type) and were donated to the blogs.perl.org team.
 
-The templates are made available under the Creative Commons Attribution-Noncommercial-Share Alike 3.0 United States License. See http://creativecommons.org/licenses/by-nc-sa/3.0/us/ for details.
+The templates are made available under the Creative Commons Attribution-Noncommercial-Share Alike 3.0 United States License. See https://creativecommons.org/licenses/by-nc-sa/3.0/us/ for details.
