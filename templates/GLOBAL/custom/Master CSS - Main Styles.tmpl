@@ -564,3 +564,61 @@ img, div, h1, h2, h3, h4, h5, h6, li { behavior: url('/static/iepngfix.htc') }
 .gist .line, .gist .linenumber {
     line-height: 1.5em;
 }
+
+/* --------- MOBILE FRIENDLY ----------- */
+
+@media only screen and (max-width: 560px) {
+    #global-nav {
+        max-width: 100%;
+        height: 30px;
+        border: 0px;
+    }
+    #global-nav-inner {
+        background: #1a374f;
+    }
+    #global-nav-links {
+        float: unset;
+        clear: both;
+        padding-top: 8px;
+    }
+    #header {
+        max-width: 100%;
+    }
+    #header-inner {
+        padding: 0;
+        text-align: center;
+    }
+    #site-title {
+        font-size: 44px;
+        overflow: hidden;
+        display: inline-block;
+        margin: 0;
+    }
+    #site-description {
+        left: unset;
+        bottom: 2px;
+        text-align: center;
+        width: 100%;
+    }
+    #container {
+        max-width: 100%;
+    }
+    #content {
+        margin: 0 1px;
+    }
+    #content-main {
+        max-width: 100%;
+    }
+    #footer {
+        max-width: 100%;
+        text-align: center;
+    }
+    .powered-by {
+        float: unset;
+    }
+    .powered-by a {
+        margin: 0 auto;
+        margin-top: 10px;
+    }
+}
+
